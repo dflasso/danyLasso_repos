@@ -19,5 +19,6 @@ import { Organization } from './entities/organization.entity';
     FindOrganizationsService,
     DeleteOrganizationsService,
   ],
+  exports: [FindOrganizationsService],
 })
 export class OrganizationsModule {}

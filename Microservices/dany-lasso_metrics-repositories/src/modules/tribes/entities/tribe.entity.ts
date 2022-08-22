@@ -2,17 +2,17 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   Column,
   CreateDateColumn,
+  Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  Relation,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { Organization } from '../../organizations/entities/organization.entity';
 import { Repo } from '../../repositories/entities/repositorie.entity';
-
-export class Tribe {
+@Entity()
+class Tribe {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id_tribe: number;
@@ -29,7 +29,7 @@ export class Tribe {
   repositories: Repo[];
 
   @ManyToOne(() => Organization, (organization) => organization.tribes)
-  organization: Relation<Organization>;
+  organization: Organization;
 
   @CreateDateColumn({
     type: 'timestamptz',
@@ -43,3 +43,5 @@ export class Tribe {
   })
   updateAt: Date;
 }
+
+export { Tribe };

@@ -1,14 +1,19 @@
 import { DataSource } from 'typeorm';
+import { config } from 'dotenv';
+import { ConfigService } from '@nestjs/config';
+
+config();
+const configService = new ConfigService();
 
 export const AppDataSource = new DataSource({
-  type: 'cockroachdb',
-  url: 'postgresql://dba-ch-dlasso:9cw4p3SgquBJ-b1xGaMKug@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb',
+  type: <any>String(configService.get('DATABASE_TYPE')) || 'cockroachdb',
+  url: configService.get('DATABASE_URL'),
   ssl: true,
   extra: {
-    options: '--cluster=dany-lasso-cluster-4395',
+    options: `--cluster=${configService.get('DATABASE_CLUSTER_ID')}`,
   },
   logging: true,
   synchronize: false,
   entities: ['src/**/*.entity.ts'],
-  migrations: ['src/settings/database/migrations/*.ts'],
+  migrations: ['src/settings/database/migrations/**.ts'],
 });

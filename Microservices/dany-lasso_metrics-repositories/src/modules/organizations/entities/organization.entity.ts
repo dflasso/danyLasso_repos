@@ -2,9 +2,9 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Entity,
+  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 

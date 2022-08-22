@@ -23,6 +23,8 @@ import { ConfigModule, ConfigType } from '@nestjs/config';
           },
           synchronize: false,
           logging: true,
+          autoLoadEntities: true,
+          entities: [__dirname + 'src/**/*.entity.ts'],
         };
       },
       dataSourceFactory: async (options) => {

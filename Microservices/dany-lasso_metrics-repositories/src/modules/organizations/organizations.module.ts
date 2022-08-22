@@ -7,6 +7,11 @@ import { DeleteOrganizationsService } from './services/delete-organizations.serv
 
 @Module({
   controllers: [V1OrganizationController],
-  providers: [SaveOrganizationService, UpdateOrganizationService, FindOrganizationsService, DeleteOrganizationsService]
+  providers: [
+    SaveOrganizationService,
+    UpdateOrganizationService,
+    FindOrganizationsService,
+    DeleteOrganizationsService,
+  ],
 })
 export class OrganizationsModule {}

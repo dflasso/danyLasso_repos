@@ -10,7 +10,14 @@ import { TribesModule } from './modules/tribes/tribes.module';
 import { RepositoriesModule } from './modules/repositories/repositories.module';
 import { MetricsModule } from './modules/metrics/metrics.module';
 @Module({
-  imports: [ConfigModuleSettings, OrganizationsModule, DatabaseModule, TribesModule, RepositoriesModule, MetricsModule],
+  imports: [
+    ConfigModuleSettings,
+    OrganizationsModule,
+    DatabaseModule,
+    TribesModule,
+    RepositoriesModule,
+    MetricsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

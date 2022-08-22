@@ -6,9 +6,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Relation,
+  ManyToOne,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
+import { Tribe } from '../../tribes/entities/tribe.entity';
 import { Metric } from '../../metrics/entities/metric.entity';
 
 @Entity()
@@ -35,6 +37,9 @@ export class Repo {
 
   @OneToOne(() => Metric, (metric) => metric.repo)
   metric: Relation<Metric>;
+
+  @ManyToOne(() => Tribe, (tribe) => tribe.repositories)
+  tribe: Relation<Tribe>;
 
   @CreateDateColumn({
     type: 'timestamptz',

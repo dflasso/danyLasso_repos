@@ -11,7 +11,6 @@ Diseñar una solución que administre organizaciones, repositorios y las métric
     + Microservicio: [Reportería]()  
     + Microservicio: [Autenticador de usuarios y clientes web]()
     + Microservicio: [Controlador - Tolerancia a fallos]()
-    + Microservicio: [Gateway]()
 - [Modelo de Datos]()
 ## Instalación
 

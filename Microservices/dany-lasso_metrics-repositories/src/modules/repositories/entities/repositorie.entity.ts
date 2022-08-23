@@ -2,30 +2,44 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Entity,
-  OneToMany,
+  OneToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  Relation,
+  ManyToOne,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
 import { Tribe } from '../../tribes/entities/tribe.entity';
+import { Metric } from '../../metrics/entities/metric.entity';
 
 @Entity()
-export class Organization {
+export class Repo {
   @ApiProperty()
   @PrimaryGeneratedColumn()
-  id_organization: number;
+  id_repository: number;
 
   @ApiProperty()
   @Column({ type: 'varchar', length: 50 })
   name: string;
 
   @ApiProperty()
-  @Column({ type: 'int' })
-  status: number;
+  @Column({ type: 'char', length: 1 })
+  state: string;
 
-  @OneToMany(() => Tribe, (tribe) => tribe.organization)
-  tribes: Tribe[];
+  @ApiProperty()
+  @Column({ type: 'timestamp' })
+  create_time: Date;
+
+  @ApiProperty()
+  @Column({ type: 'char', length: 1 })
+  status: string;
+
+  @OneToOne(() => Metric, (metric) => metric.repo)
+  metric: Relation<Metric>;
+
+  @ManyToOne(() => Tribe, (tribe) => tribe.repositories)
+  tribe: Relation<Tribe>;
 
   @CreateDateColumn({
     type: 'timestamptz',

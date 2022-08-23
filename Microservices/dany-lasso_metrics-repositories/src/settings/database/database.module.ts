@@ -21,8 +21,10 @@ import { ConfigModule, ConfigType } from '@nestjs/config';
           extra: {
             options: `--cluster=${clusterId}`,
           },
-          synchronize: true,
+          synchronize: false,
+          logging: true,
           autoLoadEntities: true,
+          entities: [__dirname + 'src/**/*.entity.ts'],
         };
       },
       dataSourceFactory: async (options) => {

@@ -1,20 +1,21 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
-  PrimaryGeneratedColumn,
   Column,
-  Entity,
-  OneToMany,
   CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ApiProperty } from '@nestjs/swagger';
 
-import { Tribe } from '../../tribes/entities/tribe.entity';
-
+import { Organization } from '../../organizations/entities/organization.entity';
+import { Repo } from '../../repositories/entities/repositorie.entity';
 @Entity()
-export class Organization {
+class Tribe {
   @ApiProperty()
   @PrimaryGeneratedColumn()
-  id_organization: number;
+  id_tribe: number;
 
   @ApiProperty()
   @Column({ type: 'varchar', length: 50 })
@@ -24,8 +25,11 @@ export class Organization {
   @Column({ type: 'int' })
   status: number;
 
-  @OneToMany(() => Tribe, (tribe) => tribe.organization)
-  tribes: Tribe[];
+  @OneToMany(() => Repo, (repo) => repo.tribe)
+  repositories: Repo[];
+
+  @ManyToOne(() => Organization, (organization) => organization.tribes)
+  organization: Organization;
 
   @CreateDateColumn({
     type: 'timestamptz',
@@ -39,3 +43,5 @@ export class Organization {
   })
   updateAt: Date;
 }
+
+export { Tribe };

@@ -8,20 +8,21 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+
 import {
   CreateMetricRequestDto,
   FindMetricsByTribe,
 } from '../dtos/metric-requests.dto';
 import { Metric } from '../entities/metric.entity';
-import { FindMetricsService } from '../service/find-metrics.service';
+import { HandlerFindMetricsByTribesService } from '../service/handler-find-metrics-by-tribes.service';
 import { SaveMetricsService } from '../service/save-metrics.service';
 
 @ApiTags('Metrics')
 @Controller('/api/v1/metrics')
 export class V1MetricsController {
   constructor(
-    private findMetricsService: FindMetricsService,
     private saveMetricsService: SaveMetricsService,
+    private handlerFindMetricsByTribesService: HandlerFindMetricsByTribesService,
   ) {}
 
   @ApiOperation({ summary: 'Save Metric' })
@@ -49,6 +50,7 @@ export class V1MetricsController {
     request.state = state;
     request.coverageMetricMin = coverageMetricMin;
     request.coverageMetricMax = coverageMetricMax;
-    return this.findMetricsService.findAllByIdTribe(request);
+
+    return this.handlerFindMetricsByTribesService.handle(request);
   }
 }

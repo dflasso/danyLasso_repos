@@ -27,6 +27,9 @@ export class FindTribesService {
 
     try {
       tribeReovery = await this.tribeRepository.findOne({
+        relations: {
+          organization: true,
+        },
         where: {
           id_tribe: id,
         },

@@ -11,5 +11,6 @@ import { OrganizationsModule } from '../organizations/organizations.module';
   imports: [TypeOrmModule.forFeature([Tribe]), OrganizationsModule],
   controllers: [V1TribesController],
   providers: [FindTribesService, SaveTribesService],
+  exports: [FindTribesService],
 })
 export class TribesModule {}

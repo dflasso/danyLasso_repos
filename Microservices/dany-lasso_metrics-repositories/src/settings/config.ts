@@ -10,6 +10,16 @@ const config = registerAs('config', () => {
       urlRaw: process.env.DATABASE_URL_RAW,
       type: process.env.DATABASE_TYPE,
     },
+    externalWs: {
+      reposVerified: {
+        host: process.env.HOST_WS_REPOSITORIES_VERIFIED,
+        apis: {
+          v1: {
+            getAll: process.env.WS_REPOSITORIES_VERIFIED_V1_API_GET_ALL,
+          },
+        },
+      },
+    },
   };
 });
 
@@ -18,6 +28,8 @@ const configSchema = Joi.object({
   DATABASE_URL_RAW: Joi.string().required(),
   DATABASE_TYPE: Joi.string().required().equal('cockroachdb', 'postgres'),
   DATABASE_CLUSTER_ID: Joi.string().required(),
+  HOST_WS_REPOSITORIES_VERIFIED: Joi.string().required(),
+  WS_REPOSITORIES_VERIFIED_V1_API_GET_ALL: Joi.string().required(),
 });
 
 const ConfigModuleSettings = ConfigModule.forRoot({

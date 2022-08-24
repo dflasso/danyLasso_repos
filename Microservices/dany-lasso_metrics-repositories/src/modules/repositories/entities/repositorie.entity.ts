@@ -28,10 +28,6 @@ export class Repo {
   state: string;
 
   @ApiProperty()
-  @Column({ type: 'timestamp' })
-  create_time: Date;
-
-  @ApiProperty()
   @Column({ type: 'char', length: 1 })
   status: string;
 
@@ -45,7 +41,7 @@ export class Repo {
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createAt: Date;
+  create_time: Date;
 
   @UpdateDateColumn({
     type: 'timestamptz',

@@ -12,5 +12,6 @@ import { TribesModule } from '../tribes/tribes.module';
   imports: [TypeOrmModule.forFeature([Repo]), TribesModule],
   controllers: [V1RepositoryController],
   providers: [FindRepositoryService, SaveRepositoryService],
+  exports: [FindRepositoryService],
 })
 export class RepositoriesModule {}

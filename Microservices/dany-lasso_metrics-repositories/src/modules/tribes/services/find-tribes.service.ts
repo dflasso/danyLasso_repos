@@ -22,7 +22,7 @@ export class FindTribesService {
     return this.tribeRepository.find();
   }
 
-  async findOneById(id: number) {
+  async findOneById(id: number): Promise<Tribe> {
     let tribeReovery = null;
 
     try {

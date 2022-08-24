@@ -9,6 +9,8 @@ import { ConfigModuleSettings } from './settings/config';
 import { TribesModule } from './modules/tribes/tribes.module';
 import { RepositoriesModule } from './modules/repositories/repositories.module';
 import { MetricsModule } from './modules/metrics/metrics.module';
+import { InfoVerifiedRepoMicroserviceModule } from './middlewares/clients-ws/info-verified-repo-microservice/info-verified-repo-microservice.module';
+
 @Module({
   imports: [
     ConfigModuleSettings,
@@ -17,6 +19,7 @@ import { MetricsModule } from './modules/metrics/metrics.module';
     TribesModule,
     RepositoriesModule,
     MetricsModule,
+    InfoVerifiedRepoMicroserviceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

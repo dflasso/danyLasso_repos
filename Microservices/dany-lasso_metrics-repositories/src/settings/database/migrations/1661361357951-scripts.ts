@@ -1,14 +1,14 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class scripts1661191581362 implements MigrationInterface {
-  name = 'scripts1661191581362';
+export class scripts1661361357951 implements MigrationInterface {
+  name = 'scripts1661361357951';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
       `CREATE SEQUENCE "organization_id_organization_seq"`,
     );
     await queryRunner.query(
-      `CREATE TABLE "organization" ("id_organization" INT DEFAULT nextval('"organization_id_organization_seq"') NOT NULL, "name" varchar(50) NOT NULL, "status" int8 NOT NULL, CONSTRAINT "PK_c1137363ad9deea0a4e9c6ff32b" PRIMARY KEY ("id_organization"))`,
+      `CREATE TABLE "organization" ("id_organization" INT DEFAULT nextval('"organization_id_organization_seq"') NOT NULL, "name" varchar(50) NOT NULL, "status" int8 NOT NULL, "createAt" timestamptz NOT NULL DEFAULT current_timestamp(), "updateAt" timestamptz NOT NULL DEFAULT current_timestamp(), CONSTRAINT "PK_c1137363ad9deea0a4e9c6ff32b" PRIMARY KEY ("id_organization"))`,
     );
     await queryRunner.query(`CREATE SEQUENCE "tribe_id_tribe_seq"`);
     await queryRunner.query(
@@ -19,7 +19,7 @@ export class scripts1661191581362 implements MigrationInterface {
     );
     await queryRunner.query(`CREATE SEQUENCE "repo_id_repository_seq"`);
     await queryRunner.query(
-      `CREATE TABLE "repo" ("id_repository" INT DEFAULT nextval('"repo_id_repository_seq"') NOT NULL, "name" varchar(50) NOT NULL, "state" char(1) NOT NULL, "create_time" timestamp NOT NULL, "status" char(1) NOT NULL, "createAt" timestamptz NOT NULL DEFAULT current_timestamp(), "updateAt" timestamptz NOT NULL DEFAULT current_timestamp(), "tribeIdTribe" int8, CONSTRAINT "PK_a7904527dae09298e858344e12e" PRIMARY KEY ("id_repository"))`,
+      `CREATE TABLE "repo" ("id_repository" INT DEFAULT nextval('"repo_id_repository_seq"') NOT NULL, "name" varchar(50) NOT NULL, "state" char(1) NOT NULL, "status" char(1) NOT NULL, "create_time" timestamptz NOT NULL DEFAULT current_timestamp(), "updateAt" timestamptz NOT NULL DEFAULT current_timestamp(), "tribeIdTribe" int8, CONSTRAINT "PK_a7904527dae09298e858344e12e" PRIMARY KEY ("id_repository"))`,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_4d36c8258dedb75ec9e1ff7c00" ON "repo" ("tribeIdTribe") `,

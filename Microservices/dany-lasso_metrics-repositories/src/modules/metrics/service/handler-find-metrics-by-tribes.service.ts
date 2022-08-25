@@ -54,7 +54,6 @@ export class HandlerFindMetricsByTribesService {
               reposRecovery,
               tribeRecovery.organization.name,
             );
-          console.log('lstMetricsByTribe ', lstMetricsByTribe);
           resolve(lstMetricsByTribe);
         } else {
           const apiError = new ApiError();

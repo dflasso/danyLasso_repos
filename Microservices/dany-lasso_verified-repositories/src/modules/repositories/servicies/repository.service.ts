@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AllRepositoriesVerifiedResponse } from '../dtos/all-repos-verified-res.dto';
 
-const lstRepositoriesMock: AllRepositoriesVerifiedResponse[] = [
+export const lstRepositoriesMock: AllRepositoriesVerifiedResponse[] = [
   {
     id: 1,
     state: 604,

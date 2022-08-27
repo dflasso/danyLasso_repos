@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RepositoryService } from './repository.service';
+import { lstRepositoriesMock, RepositoryService } from './repository.service';
 
 describe('RepositoryService', () => {
   let service: RepositoryService;
@@ -14,5 +14,9 @@ describe('RepositoryService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  it('should return an array of repositories with status code', () => {
+    expect(service.getAllRepositories()).toBe(lstRepositoriesMock);
   });
 });

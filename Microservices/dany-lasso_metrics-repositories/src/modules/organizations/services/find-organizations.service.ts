@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm'; // 👈 import
-import { ApiError } from 'src/scheme/api-error.scheme';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ApiError } from '../../../scheme/api-error.scheme';
 import { Repository } from 'typeorm';
 
 import { Organization } from '../entities/organization.entity';
